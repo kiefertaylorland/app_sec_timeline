@@ -109,6 +109,7 @@ export default function TimelineStory() {
                 </h3>
                 {event.media && (
                   <div className="mb-4">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img 
                       src={event.media.url} 
                       alt={event.media.alt || event.text.headline}
