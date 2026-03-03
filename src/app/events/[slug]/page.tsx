@@ -57,6 +57,7 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
           
           {event.media && event.media.type === "image" && (
             <div className="mb-8">
+              {/* Using img instead of next/image because media URLs may be external */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img 
                 src={event.media.url} 

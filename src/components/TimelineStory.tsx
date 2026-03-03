@@ -109,6 +109,7 @@ export default function TimelineStory() {
                 </h3>
                 {event.media && (
                   <div className="mb-4">
+                    {/* Using img instead of next/image because media URLs may be external */}
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img 
                       src={event.media.url} 
@@ -119,8 +120,9 @@ export default function TimelineStory() {
                 )}
                 <div 
                   className="text-slate-300 prose prose-invert max-w-none"
-                  dangerouslySetInnerHTML={{ __html: event.text.text }}
-                />
+                >
+                  {event.text.text}
+                </div>
                 <a 
                   href={`/events/${event.unique_id}`}
                   className="inline-block mt-4 text-purple-400 hover:text-purple-300 font-medium transition-colors"
