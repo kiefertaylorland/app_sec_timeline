@@ -42,25 +42,6 @@ export default function ChaptersPage() {
       });
   }, []);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 }
-    }
-  };
-
   return (
     <div className="min-h-screen bg-slate-900">
       <header className="bg-slate-800 border-b border-slate-700 sticky top-0 z-50 backdrop-blur-sm bg-slate-800/80">
@@ -101,24 +82,20 @@ export default function ChaptersPage() {
               transition={{
                 duration: 1.5,
                 repeat: Infinity,
-                ease: "easeInOut"
               }}
             >
               Loading chapters...
             </motion.div>
           </div>
         ) : (
-          <motion.div
-            className="space-y-12"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            {Object.entries(eventsByDecade).sort().map(([decade, decadeEvents]) => (
+          <div className="space-y-12">
+            {Object.entries(eventsByDecade).sort().map(([decade, decadeEvents], decadeIdx) => (
               <motion.div
                 key={decade}
                 className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-6 border border-slate-700/50"
-                variants={itemVariants}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: decadeIdx * 0.1 }}
               >
                 <h2 className="text-3xl font-bold text-white mb-6">{decade}</h2>
                 <div className="space-y-4">
@@ -162,7 +139,7 @@ export default function ChaptersPage() {
                 </div>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         )}
       </main>
     </div>

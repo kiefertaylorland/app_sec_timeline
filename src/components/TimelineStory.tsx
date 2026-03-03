@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import LoadingSkeleton from "./LoadingSkeleton";
 
 interface TimelineData {
   title: {
@@ -110,20 +111,16 @@ export default function TimelineStory() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-[400px]">
+      <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-8 border border-slate-700/50">
         <motion.div
-          className="text-white text-xl"
-          animate={{
-            opacity: [0.5, 1, 0.5],
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          className="mb-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
         >
-          Loading timeline...
+          <div className="h-10 bg-slate-700 rounded w-2/3 mb-4 animate-pulse" />
+          <div className="h-6 bg-slate-700 rounded w-1/2 animate-pulse" />
         </motion.div>
+        <LoadingSkeleton />
       </div>
     );
   }
