@@ -65,6 +65,66 @@
         "text": "Log4Shell (CVE-2021-44228) revealed a critical remote code execution vulnerability in Apache Log4j, one of the most widely used Java logging libraries, affecting millions of applications."
       },
       "unique_id": "log4shell"
+    },
+    {
+      "start_date": {
+        "year": "2023",
+        "month": "1",
+        "day": "4"
+      },
+      "text": {
+        "headline": "CircleCI Security Breach: Session Token Compromise",
+        "text": "A malware attack on a CircleCI engineer's laptop led to the theft of a 2FA-backed session token, resulting in unauthorized access to production systems and customer secrets, affecting all CircleCI customers."
+      },
+      "unique_id": "circleci-breach"
+    },
+    {
+      "start_date": {
+        "year": "2023",
+        "month": "3",
+        "day": "29"
+      },
+      "text": {
+        "headline": "3CX Supply Chain Attack: Trojanized VoIP Software",
+        "text": "Attackers compromised 3CX's build system to distribute trojanized versions of the 3CX Desktop App to customers worldwide, demonstrating the continuing threat of sophisticated supply chain attacks."
+      },
+      "unique_id": "3cx-supply-chain-attack"
+    },
+    {
+      "start_date": {
+        "year": "2023",
+        "month": "5",
+        "day": "31"
+      },
+      "text": {
+        "headline": "MOVEit Transfer: Mass Data Breach via SQL Injection",
+        "text": "CVE-2023-34362, a critical SQL injection vulnerability in MOVEit Transfer, was exploited by the CL0P ransomware group to exfiltrate data from hundreds of organizations globally, affecting millions of individuals."
+      },
+      "unique_id": "moveit-vulnerability"
+    },
+    {
+      "start_date": {
+        "year": "2023",
+        "month": "10",
+        "day": "19"
+      },
+      "text": {
+        "headline": "Okta Support System Breach: Session Token Theft",
+        "text": "Attackers compromised Okta's customer support system using stolen credentials, accessing session tokens and customer data for nearly all Okta customers, highlighting risks even in identity management platforms."
+      },
+      "unique_id": "okta-support-breach"
+    },
+    {
+      "start_date": {
+        "year": "2024",
+        "month": "3",
+        "day": "29"
+      },
+      "text": {
+        "headline": "XZ Utils Backdoor: Near-Miss Supply Chain Attack",
+        "text": "A sophisticated backdoor was discovered in XZ Utils, a core Linux compression library, after a multi-year social engineering campaign to gain maintainer access. Early detection prevented a catastrophic supply chain attack."
+      },
+      "unique_id": "xz-utils-backdoor"
     }
   ]
 }
