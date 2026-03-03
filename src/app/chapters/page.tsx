@@ -15,11 +15,17 @@ interface Event {
 export default function ChaptersPage() {
   const [eventsByDecade, setEventsByDecade] = useState<Record<string, Event[]>>({});
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     // Fetch events from the API
     fetch('/api/events')
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Failed to load events');
+        }
+        return res.json();
+      })
       .then(events => {
         // Group events by decade
         const grouped = events.reduce((acc: Record<string, Event[]>, event: Event) => {
@@ -37,7 +43,9 @@ export default function ChaptersPage() {
         setEventsByDecade(grouped);
         setLoading(false);
       })
-      .catch(() => {
+      .catch((err) => {
+        console.error('Error loading chapters:', err);
+        setError(err.message);
         setLoading(false);
       });
   }, []);
@@ -87,6 +95,15 @@ export default function ChaptersPage() {
               Loading chapters...
             </motion.div>
           </div>
+        ) : error ? (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-red-900/20 border border-red-700 rounded-lg p-6 text-white"
+          >
+            <h2 className="text-xl font-bold mb-2">Error Loading Chapters</h2>
+            <p>{error}</p>
+          </motion.div>
         ) : (
           <div className="space-y-12">
             {Object.entries(eventsByDecade).sort().map(([decade, decadeEvents], decadeIdx) => (
